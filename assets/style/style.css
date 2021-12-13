@@ -4,6 +4,11 @@
   box-sizing: border-box;
   flex-shrink: 0;
 }
+
+::-webkit-scrollbar {
+  opacity: 0;
+}
+
 .page_root {
   position: relative;
   width: 1920px;
@@ -12,8 +17,7 @@
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 26px;
-  z-index: -2;
+  z-index: 1;
 }
 
 .mask {
@@ -22,9 +26,16 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: url('../images/氟产业开发区布置图分层.png') no-repeat;
-  background-size: 100% 100%;
-  z-index: -1;
+  z-index: 3;
+}
+
+.mask img {
+  display: none;
+}
+
+.viewer-backdrop {
+  z-index: 4 !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 .header {
@@ -34,6 +45,8 @@
   background-size: 100% 100%;
   display: flex;
   justify-content: space-between;
+  z-index: 5;
+  padding: 0 26px;
 }
 
 .header_title {
@@ -80,11 +93,6 @@
   margin-top: 10px;
 }
 
-.content {
-  width: 100%;
-  flex: 1 0;
-  display: flex;
-}
 .box {
   display: flex;
   flex-direction: column;
@@ -100,11 +108,15 @@
   margin-top: 28px;
 }
 
-.content .left {
+.left {
+  position: absolute;
+  top: 94px;
   width: 472px;
-  height: 100%;
+  height: 952px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  z-index: 5;
 }
 
 .device {
@@ -112,6 +124,8 @@
   flex: 1 0;
   background: url('../images/设备管理.png') no-repeat;
   background-size: 100% 100%;
+  overflow: hidden;
+  z-index: 5;
 }
 
 .device .left_top_chart {
@@ -155,6 +169,8 @@
   flex: 1 0;
   background: url('../images/设备管理.png') no-repeat;
   background-size: 100% 100%;
+  overflow: hidden;
+  padding-bottom: 48px;
 }
 
 .box_content {
@@ -163,6 +179,7 @@
   display: flex;
   flex-direction: column;
   padding: 12px 48px;
+  overflow-y: scroll;
 }
 
 .new_item {
@@ -217,11 +234,13 @@
 }
 
 .center_bottom {
+  position: absolute;
+  bottom: 48px;
   width: 100%;
   height: 86px;
   display: flex;
-  padding: 0 100px;
-  margin-bottom: 16px;
+  padding: 0 26%;
+  z-index: 5;
 }
 
 .center_bottom_item {
@@ -275,11 +294,15 @@
 
 
 
-.content .right {
+.right {
+  position: absolute;
+  top: 94px;
+  right: 0;
   width: 472px;
-  height: 100%;
+  height: 952px;
   display: flex;
   flex-direction: column;
+  z-index: 5;
 }
 
 .percentage {
@@ -318,11 +341,13 @@
 }
 
 .footer {
+  position: absolute;
+  bottom: 16px;
   width: 100%;
   height: 18px;
   background: url('../images/底.png') no-repeat;
   background-size: 100% 100%;
-  margin-bottom: 16px;
+  z-index: 5;
 }
 
 .layer {
@@ -335,7 +360,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: -3;
+  z-index: -1;
   opacity: 0;
 }
 
@@ -347,6 +372,7 @@
   display: flex;
   flex-direction: column;
   padding: 24px 48px 48px 48px;
+  overflow: hidden;
 }
 
 .layer_content_title {
@@ -370,19 +396,26 @@
   width: 100%;
   flex: 1 0;
   display: flex;
+  overflow: hidden;
 }
 
-.layer_content_children .left {
+.layer_content_children .layer_content_children_left {
   flex: 7 0;
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .bigimg {
   width: 100%;
   height: 474px;
   margin-bottom: 10px;
+}
+
+.bigimg img{
+  width: 100%;
+  height: 100%;
 }
 
 .smallImg {
@@ -438,21 +471,27 @@
   margin-right: 10px;
 }
 
-.layer_content_children .right {
+.layer_content_children .layer_content_children_right {
   flex: 3 0;
   height: 100%;
   margin-left: 10px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.layer_content_children .right .date_select {
+.layer_content_children .layer_content_children_right .date_select {
   width: 100%;
   height: 52px;
   background: rgba(0, 138, 255, 0.3);
   margin-bottom: 10px;
 }
 
+.layui-input, .layui-select, .layui-textarea {
+  background-color: rgba(0, 138, 255, 0.3) !important;
+  border: none !important;
+  color: rgba(0, 138, 255, 1) !important;
+}
 .icon_bar {
   width: 100%;
   height: 169px;
@@ -482,6 +521,7 @@
   top: 16px;
   width: 26px;
   height: 39px;
+  z-index: 1;
 }
 
 .icon_bar .item .icons :last-child {
@@ -512,6 +552,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 10px;
+  overflow-y: scroll;
 }
 
 .info_bar_item {
