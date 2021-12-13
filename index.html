@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>html</title>
+  <link rel="stylesheet"
+        href="./assets/style/style.css">
+  <script src="./assets/js/echarts.js"></script>
+
+  <!-- 引入 layui.css -->
+  <link rel="stylesheet"
+        type="text/css"
+        href="https://www.layuicdn.com/layui/css/layui.css" />
+
+  <!-- 引入 layui.js -->
+  <script src="https://www.layuicdn.com/layui/layui.js"></script>
+
+  <script type="text/javascript">
+    function itemonClick() {
+      const layer = document.getElementById('layer')
+      const zIndex = layer.style.zIndex
+      if (zIndex === '3') {
+        layer.style.zIndex = '-3'
+        layer.style.opacity = 0
+      } else {
+        layer.style.zIndex = '3'
+        layer.style.opacity = 1
+      }
+
+    }
+
+    window.onload = function () {
+      // layui.use(['element', 'Tab'], function () {
+      // });
+      layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#test1' //指定元素
+        });
+      });
+
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('left_top_chart'));
+
+      var xData2 = ["01", "02", "03", "04", "05", "06", "07"];
+      var data1 = [100, 60, 130, 170, 140, 100, 140];
+      var path = 'path://M214,1079l8-6h16l8,6-8,6H222Z';
+      let colorList = {
+        type: 'linear',
+        x: 1,
+        y: 0,
+        x2: 0,
+        y2: 0,
+        colorStops: [{
+          offset: 0,
+          color: 'RGBA(43,102,139,0.6)',
+        },
+        {
+          offset: .2,
+          color: 'RGBA(43,102,139,0.9)'
+        },
+        {
+          offset: .2,
+          color: 'RGBA(56,153,190,0.8)'
+        },
+        {
+          offset: .5,
+          color: 'RGBA(56,153,190,0.9)'
+        },
+        {
+          offset: .8,
+          color: 'RGBA(56,153,190,0.8)'
+        },
+        {
+          offset: .8,
+          color: 'RGBA(43,102,139,0.9)'
+        },
+        {
+          offset: 1,
+          color: 'RGBA(43,102,139,0.6)'
+        }
+        ],
+        global: false // 缺省为 false
+      }
+      option = {
+        grid: {
+          top: '5%',
+          left: '16%',
+          // right: '20%',
+          bottom: '20%'
+        },
+        xAxis: {
+          axisLabel: {
+            interval: 0,
+            textStyle: {
+              color: 'rgba(0, 162, 255, 1)',
+              fontSize: 12
+            },
+            margin: 20,
+          },
+          splitLine: {
+            show: false
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255, 255,255, .8)',
+              width: 3,
+            }
+          },
+          splitArea: {
+            show: false,
+          },
+          axisTick: {
+            show: false
+          },
+          data: xData2
+        },
+        yAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#fff',
+              width: 3,
+            }
+          },
+          axisLabel: {
+            interval: 0,
+            textStyle: {
+              color: 'rgba(0, 162, 255, 1)',
+              fontSize: 12
+            },
+            margin: 20,
+          },
+          splitLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+        },
+        series: [{
+          name: "",
+          type: "pictorialBar",
+          symbol: path,
+          symbolSize: [25, 25],
+          symbolOffset: [0, 0],
+          z: 1,
+          itemStyle: {
+            opacity: 1,
+            color: colorList,
+            shadowColor: 'rgba(115, 106, 28, .7)',
+            shadowBlur: 3,
+            shadowOffsetX: 0,
+            shadowOffsetY: 2
+          },
+          data: [1, 1, 1, 1, 1, 1, 1]
+        },
+        {
+          name: '2020',
+          type: 'bar',
+          symbol: path,
+          barWidth: 25,
+          barGap: '-100%',
+          z: 10,
+          itemStyle: {
+            color: colorList
+          },
+          data: data1
+        },
+        {
+          name: "",
+          type: "pictorialBar",
+          symbol: path,
+          symbolSize: [25, 10],
+          symbolOffset: [0, 0],
+          z: 12,
+          itemStyle: {
+            opacity: 1,
+            color: '#69d8ff'
+          },
+          symbolPosition: "end",
+          data: data1
+        },
+        ]
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+
+
+      // 折线图
+
+
+      let xLabel = ['1', '2', '3', '4', '5', '6']
+      let lineData1 = ["40", "60", "22", "85", "50", "40"]
+      let lineData2 = ["20", "50", "12", "65", "30", "60"]
+      let lineData3 = ["60", "30", "65", "12", "50", "20"]
+
+      lineoption = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            lineStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: 'rgba(126,199,255,0)' // 0% 处的颜色
+                }, {
+                  offset: 0.5,
+                  color: 'rgba(126,199,255,1)' // 100% 处的颜色
+                }, {
+                  offset: 1,
+                  color: 'rgba(126,199,255,0)' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+              }
+            },
+          }
+        },
+        legend: {
+          align: "left",
+          right: '20%',
+          top: '10%',
+          type: 'plain',
+          textStyle: {
+            color: 'rgba(0, 162, 255, 1)',
+            fontSize: 12
+          },
+          // icon:'rect',
+          itemGap: 25,
+          itemWidth: 18,
+          icon: 'path://M0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z',
+
+          data: [
+            {
+              name: '管理人员'
+            },
+            {
+              name: '消防设备'
+            },
+            {
+              name: '易燃材料'
+            }
+          ]
+        },
+        grid: {
+          top: '20%',
+          left: '18%',
+          // right: '20%',
+          bottom: '20%'
+        },
+        xAxis: [{
+          type: 'category',
+          boundaryGap: false,
+          axisLine: { //坐标轴轴线相关设置。数学上的x轴
+            show: true,
+            lineStyle: {
+              color: '#233653'
+            },
+          },
+          axisLabel: { //坐标轴刻度标签的相关设置
+            textStyle: {
+              color: 'rgba(0, 162, 255, 1)',
+              fontSize: 12
+            },
+            formatter: function (data) {
+              return data
+            }
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#192a44'
+            },
+          },
+          axisTick: {
+            show: false,
+          },
+          data: xLabel
+        }],
+        yAxis: [{
+          name: '',
+          nameTextStyle: {
+            color: 'rgba(0, 162, 255, 1)',
+            fontSize: 12,
+            padding: 10
+          },
+          min: 0,
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#192a44'
+            },
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: "#233653"
+            }
+
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: 'rgba(0, 162, 255, 1)',
+              padding: 16
+            },
+            formatter: function (value) {
+              if (value === 0) {
+                return value
+              }
+              return value
+            }
+          },
+          axisTick: {
+            show: false,
+          },
+        }],
+        series: [{
+          name: '管理人员',
+          type: 'line',
+          symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
+          showAllSymbol: true,
+          symbolSize: 0,
+          smooth: true,
+          lineStyle: {
+            normal: {
+              width: 2,
+              color: "rgba(113, 220, 136, 1)", // 线条颜色
+            },
+          },
+          itemStyle: {
+            color: "rgba(113, 220, 136, 1)",
+
+          },
+          tooltip: {
+            show: true
+          },
+          areaStyle: { //区域填充样式
+            normal: {
+              //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: "rgba(113, 220, 136, 0.3)"
+              },
+              {
+                offset: 1,
+                color: "rgba(113, 220, 136, 0)"
+              }
+              ], false),
+              shadowColor: 'rgba(113, 220, 136, 0.5)', //阴影颜色
+              shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+            }
+          },
+          data: lineData1
+        }, {
+          name: '消防设备',
+          type: 'line',
+          symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
+          showAllSymbol: true,
+          symbolSize: 0,
+          smooth: true,
+          lineStyle: {
+            normal: {
+              width: 2,
+              color: "rgba(0, 254, 255, 1)", // 线条颜色
+            },
+          },
+          itemStyle: {
+            color: "rgba(0, 254, 255, 1)",
+
+          },
+          tooltip: {
+            show: true
+          },
+          areaStyle: { //区域填充样式
+            normal: {
+              //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: "rgba(0, 254, 255, 0.3)"
+              },
+              {
+                offset: 1,
+                color: "rgba(0, 254, 255, 0)"
+              }
+              ], false),
+              shadowColor: 'rgba(0, 254, 255, 0.5)', //阴影颜色
+              shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+            }
+          },
+          data: lineData2
+        }, {
+          name: '易燃材料',
+          type: 'line',
+          symbol: 'circle', // 默认是空心圆（中间是白色的），改成实心圆
+          showAllSymbol: true,
+          symbolSize: 0,
+          smooth: true,
+          lineStyle: {
+            normal: {
+              width: 2,
+              color: "RGBA(15, 130, 222, 1)", // 线条颜色
+            }
+          },
+          itemStyle: {
+            color: "RGBA(15, 130, 222, 1)",
+
+          },
+          tooltip: {
+            show: true
+          },
+          areaStyle: { //区域填充样式
+            normal: {
+              //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: "rgba(15, 130, 222, 0.3)"
+              },
+              {
+                offset: 1,
+                color: "rgba(15, 130, 222, 0)"
+              }
+              ], false),
+              shadowColor: 'rgba(15, 130, 222, 0.5)', //阴影颜色
+              shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+            }
+          },
+          data: lineData3
+        }]
+      };
+      let len = 0
+      setInterval(() => {
+        if (len === xLabel.length) {
+          len = 0
+        }
+        myChart.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: len,
+        })
+        len++
+      }, 1000)
+
+      var myChart2 = echarts.init(document.getElementById('right_center_chart'));
+      // 使用刚指定的配置项和数据显示图表。
+      myChart2.setOption(lineoption);
+
+
+      // 饼图
+      //颜色16进制换算rgba,添加透明度
+      function hexToRgba(hex, opacity) {
+        return (
+          'rgba(' +
+          parseInt('0x' + hex.slice(1, 3)) +
+          ',' +
+          parseInt('0x' + hex.slice(3, 5)) +
+          ',' +
+          parseInt('0x' + hex.slice(5, 7)) +
+          ',' +
+          opacity +
+          ')'
+        );
+      }
+
+      // 数据
+      chartdata = [
+        {
+          name: '消防设备',
+          value: 50,
+        },
+        {
+          name: '易燃材料',
+          value: 25,
+        },
+        {
+          name: '管理人员',
+          value: 25,
+        }
+      ];
+      radius = ['30%', '34%'];
+      // 颜色系列
+      color = ['#37FFC9', '#FFE777', '#19D6FF', '#32A1FF', '#cccccc', '#ff1111'];
+      labelshow = true;
+      centerimg = true;
+      lineshow = false;
+      let color1 = [],
+        color2 = [],
+        color3 = [];
+      // 设置每层圆环颜色和添加间隔的透明色
+      color.forEach((item) => {
+        color1.push(item, 'transparent');
+        color2.push(hexToRgba(item, 0.7), 'transparent');
+        color3.push(hexToRgba(item, 0.4), 'transparent');
+      });
+      let data2 = [];
+      let sum = 0;
+      // 根据总值设置间隔值大小
+      chartdata.forEach((item) => {
+        sum += Number(item.value);
+      });
+      // 给每个数据后添加特定的透明的数据形成间隔
+      chartdata.forEach((item, index) => {
+        if (item.value !== 0) {
+          data2.push(item, {
+            name: '',
+            value: sum / 100,
+            labelLine: {
+              show: false,
+              lineStyle: {
+                color: 'transparent',
+              },
+            },
+            itemStyle: {
+              color: 'transparent',
+            },
+          });
+        }
+      });
+      // 每层圆环大小
+      let radius2 = [Number(radius[1].split('%')[0]) + 0 + '%', Number(radius[1].split('%')[0]) + 4 + '%'];
+      let radius3 = [Number(radius[1].split('%')[0]) + 4 + '%', Number(radius[1].split('%')[0]) + 8 + '%'];
+      pieoption = {
+        title: {
+          show: true,
+          text: '金凯\n化工',
+          textAlign: 'center',
+          textVerticalAlign: 'center',
+          left: '35%',
+          top: '50%',
+          textStyle: {
+            color: 'RGBA(0, 182, 243, 1)'
+          }
+        },
+        grid: {
+          top: '20%',
+          left: '0',
+          // right: '20%',
+          bottom: '20%'
+        },
+        tooltip: {
+          formatter: (params) => {
+            if (params.name !== '') {
+              return params.name + ' : ' + params.value + '\n' + '(' + params.percent + '%)';
+            }
+          },
+        },
+        legend: {
+          show: true,
+          right: '20%',
+          top: '30%',
+          formatter: (name) => {
+            const finded = chartdata.find(item => item.name === name)
+            const value = finded.value + '%'
+            return `{b | ${name}}\n{c | ${value}}`
+          },
+          itemWidth: 2,
+          itemHeight: 30,
+          textStyle: {
+            rich: {
+              b: {
+                color: 'RGBA(0, 138, 255, 1)',
+                fontSize: 16,
+                lineHeight: 24
+              },
+              c: {
+                color: '#fff',
+                fontSize: 12,
+              },
+            }
+          }
+        },
+        series: [
+          // 最外层圆环
+          {
+            type: 'pie',
+            radius: radius3,
+            center: ['35%', '50%'],
+            hoverAnimation: false,
+            startAngle: 90,
+            selectedMode: 'single',
+            selectedOffset: 0,
+            itemStyle: {
+              normal: {
+                color: (params) => {
+                  return color1[params.dataIndex];
+                },
+              },
+            },
+            label: {
+              show: false,
+            },
+            labelLine: {
+              show: false,
+            },
+            data: data2,
+            z: 666,
+          },
+          {
+            type: 'pie',
+            radius: radius2,
+            center: ['35%', '50%'],
+            hoverAnimation: false,
+            startAngle: 90,
+            selectedMode: 'single',
+            selectedOffset: 0,
+            itemStyle: {
+              normal: {
+                color: (params) => {
+                  return color2[params.dataIndex];
+                },
+              },
+            },
+            label: {
+              show: false,
+            },
+            data: data2,
+            z: 666,
+          },
+          {
+            type: 'pie',
+            radius: radius,
+            center: ['35%', '50%'],
+            hoverAnimation: false,
+            startAngle: 90,
+            selectedMode: 'single',
+            selectedOffset: 0,
+            itemStyle: {
+              normal: {
+                color: (params) => {
+                  return color3[params.dataIndex];
+                },
+              },
+            },
+            label: {
+              show: false,
+            },
+            data: data2,
+            z: 666,
+          },
+        ],
+      };
+
+      var myChart3 = echarts.init(document.getElementById('right_top_chart'));
+      // 使用刚指定的配置项和数据显示图表。
+      myChart3.setOption(pieoption);
+    }
+  </script>
+</head>
+
+<body onclick="itemonClick()">
+  <div class="page_root">
+    <div class="mask"></div>
+    <section class="header">
+      <div class="weather">
+        <img src="./assets/images/云.png"
+             alt="">
+        <span>多云</span>
+        <span>-1℃-5℃</span>
+      </div>
+      <div class="header_title">氟产业开发区智慧园区管理平台</div>
+      <div class="header_time">
+        <span>2021-12-02 18:00:00</span>
+        <img src="./assets/images/退出.png"
+             alt="">
+      </div>
+    </section>
+    <section class="content">
+      <div class="left">
+        <div class="box device">
+          <div class="box_title">设备管理</div>
+          <div class="select_bar">
+            <div class="item">
+              <span class="selected"></span>
+              消防设备
+            </div>
+            <div class="item">
+              <span></span>
+              易燃材料
+            </div>
+            <div class="item">
+              <span></span>
+              管理人员
+            </div>
+          </div>
+          <div id="left_top_chart"
+               class="left_top_chart"></div>
+        </div>
+        <div class="box new">
+          <div class="box_title">最新消息</div>
+          <div class="box_content">
+            <div class="new_item">
+              <span></span>
+              <div class="new_item_info">
+                <div class="label">金凯化工厂区</div>
+                <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+              </div>
+            </div>
+            <div class="new_item">
+              <span></span>
+              <div class="new_item_info">
+                <div class="label">金凯化工厂区</div>
+                <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+              </div>
+            </div>
+            <div class="new_item">
+              <span></span>
+              <div class="new_item_info">
+                <div class="label">金凯化工厂区</div>
+                <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+              </div>
+            </div>
+            <div class="new_item">
+              <span></span>
+              <div class="new_item_info">
+                <div class="label">金凯化工厂区</div>
+                <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <div class="center_top"></div>
+        <div class="center_bottom">
+          <div class="center_bottom_item">
+            <div class="imgBox">
+              <img class="img1"
+                   src="./assets/images/消防设备-bj.png"
+                   alt="">
+              <img class="img2"
+                   src="./assets/images/消防设备.png"
+                   alt="">
+            </div>
+            <div class="info">
+              <div class="label">15469</div>
+              <div class="value">消防设备</div>
+            </div>
+          </div>
+
+          <div class="center_bottom_item">
+            <div class="imgBox">
+              <img class="img1"
+                   src="./assets/images/消防设备-bj.png"
+                   alt="">
+              <img class="img2"
+                   src="./assets/images/易燃材料.png"
+                   alt="">
+            </div>
+            <div class="info">
+              <div class="label">15469</div>
+              <div class="value">易燃材料</div>
+            </div>
+          </div>
+
+          <div class="center_bottom_item">
+            <div class="imgBox">
+              <img class="img1"
+                   src="./assets/images/消防设备-bj.png"
+                   alt="">
+              <img class="img2"
+                   src="./assets/images/管理人员.png"
+                   alt="">
+            </div>
+            <div class="info">
+              <div class="label">15469</div>
+              <div class="value">管理人员</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="box percentage">
+          <div class="box_title">厂区设备百分比</div>
+          <div id="right_top_chart"
+               class="right_top_chart"></div>
+        </div>
+        <div class="box distributed">
+          <div class="box_title">厂区设备分布</div>
+          <div id="right_center_chart"
+               class="right_center_chart"></div>
+        </div>
+        <div class="box date">
+          <div class="box_title">时间选择</div>
+          <div class="date_time_select_box">
+            <input class="date_time_select" type="text" value="2021/12/13 17:04">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer"></section>
+
+    <section id="layer"
+             class="layer">
+      <div class="layer_content">
+        <div class="layer_content_title">
+          <span></span>
+          金凯厂区
+          <img src="./assets/images/关闭.png"
+               alt="">
+        </div>
+
+        <div class="layer_content_children">
+          <div class="left">
+            <div class="bigimg">
+              <div class="layui-tab">
+                <ul class="layui-tab-title">
+                  <li class="layui-this">Tab 1</li>
+                  <li>Tab 2</li>
+                  <li>Tab 3</li>
+                  <li>Tab 4</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                    <img src=""
+                         alt="">
+                  </div>
+                  <div class="layui-tab-item">
+                    <img src=""
+                         alt="">
+                  </div>
+                  <div class="layui-tab-item">
+                    <img src=""
+                         alt="">
+                  </div>
+                  <div class="layui-tab-item">
+                    <img src=""
+                         alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="smallImg">
+              <div class="item">
+                <div class="smallImg_title">
+                  <img src="./assets/images/时间.png"
+                       alt="">
+                  图文信息
+                </div>
+                <div class="smallImg_content">
+                  <img src=""
+                       alt="">
+                  简介内容简介内容简介内容简介内容
+                  简介内容简介内容简介内容简介内容
+                  简介内容简介内容简介内容简介内容。
+
+                </div>
+              </div>
+              <div class="item">
+                <div class="smallImg_title">
+                  <img src="./assets/images/时间.png"
+                       alt="">
+                  图文信息
+                </div>
+                <div class="smallImg_content">
+                  <img src=""
+                       alt="">
+                  简介内容简介内容简介内容简介内容
+                  简介内容简介内容简介内容简介内容
+                  简介内容简介内容简介内容简介内容。
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="date_select">
+              <input class="date_time_select2" type="text" value="2021/12/13 17:04">
+            </div>
+
+            <div class="icon_bar">
+              <div class="item">
+                <div class="icons">
+                  <img src="./assets/images/消防设备-1.png"
+                       alt="">
+                  <img src="./assets/images/底座-1.png"
+                       alt="">
+                </div>
+                <span class="label">消防设备</span>
+                <span class="value">256</span>
+              </div>
+              <div class="item">
+                <div class="icons">
+                  <img src="./assets/images/易燃材料-1.png"
+                       alt="">
+                  <img src="./assets/images/底座-2.png"
+                       alt="">
+                </div>
+                <span class="label">易燃材料</span>
+                <span class="value">256</span>
+              </div>
+              <div class="item">
+                <div class="icons">
+                  <img src="./assets/images/管理人员-1.png"
+                       alt="">
+                  <img src="./assets/images/底座-3.png"
+                       alt="">
+                </div>
+                <span class="label">管理人员</span>
+                <span class="value">256</span>
+              </div>
+            </div>
+
+            <div class="info_bar">
+              <div class="info_bar_item">
+                <span></span>
+                <div class="info_bar_info">
+                  <div class="label">金凯化工厂区</div>
+                  <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+                </div>
+              </div>
+              <div class="info_bar_item">
+                <span></span>
+                <div class="info_bar_info">
+                  <div class="label">金凯化工厂区</div>
+                  <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+                </div>
+              </div>
+              <div class="info_bar_item">
+                <span></span>
+                <div class="info_bar_info">
+                  <div class="label">金凯化工厂区</div>
+                  <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+                </div>
+              </div>
+              <div class="info_bar_item">
+                <span></span>
+                <div class="info_bar_info">
+                  <div class="label">金凯化工厂区</div>
+                  <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+                </div>
+              </div>
+              <div class="info_bar_item">
+                <span></span>
+                <div class="info_bar_info">
+                  <div class="label">金凯化工厂区</div>
+                  <div class="value">2021-12-02 18:00:00 更新消防设备256台</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
