@@ -4,16 +4,20 @@
 <head>
   <meta charset="utf-8">
   <title>html</title>
-  <link rel="stylesheet" href="./assets/style/style.css">
+  <link rel="stylesheet"
+        href="./assets/style/style.css">
   <script src="./assets/js/echarts.js"></script>
 
   <!-- 引入 layui.css -->
-  <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+  <link rel="stylesheet"
+        type="text/css"
+        href="https://www.layuicdn.com/layui/css/layui.css" />
 
   <!-- 引入 layui.js -->
   <script src="https://www.layuicdn.com/layui/layui.js"></script>
 
-  <link href="./assets/style/viewer.css" rel="stylesheet">
+  <link href="./assets/style/viewer.css"
+        rel="stylesheet">
   <script src="./assets/js/viewer.min.js"></script>
 
   <script type="text/javascript">
@@ -91,33 +95,33 @@
         x2: 0,
         y2: 0,
         colorStops: [{
-            offset: 0,
-            color: 'RGBA(43,102,139,0.6)',
-          },
-          {
-            offset: .2,
-            color: 'RGBA(43,102,139,0.9)'
-          },
-          {
-            offset: .2,
-            color: 'RGBA(56,153,190,0.8)'
-          },
-          {
-            offset: .5,
-            color: 'RGBA(56,153,190,0.9)'
-          },
-          {
-            offset: .8,
-            color: 'RGBA(56,153,190,0.8)'
-          },
-          {
-            offset: .8,
-            color: 'RGBA(43,102,139,0.9)'
-          },
-          {
-            offset: 1,
-            color: 'RGBA(43,102,139,0.6)'
-          }
+          offset: 0,
+          color: 'RGBA(43,102,139,0.6)',
+        },
+        {
+          offset: .2,
+          color: 'RGBA(43,102,139,0.9)'
+        },
+        {
+          offset: .2,
+          color: 'RGBA(56,153,190,0.8)'
+        },
+        {
+          offset: .5,
+          color: 'RGBA(56,153,190,0.9)'
+        },
+        {
+          offset: .8,
+          color: 'RGBA(56,153,190,0.8)'
+        },
+        {
+          offset: .8,
+          color: 'RGBA(43,102,139,0.9)'
+        },
+        {
+          offset: 1,
+          color: 'RGBA(43,102,139,0.6)'
+        }
         ],
         global: false // 缺省为 false
       }
@@ -131,11 +135,33 @@
         dataZoom: {
           type: 'slider',
           show: true,
-          left: '15%',
-          bottom: '12%',
+          bottom: '13%',
           start: 0,
           end: 50,
-          height: 12
+          height: 12,
+          dataBackground: {
+            lineStyle: {
+              opacity: 0
+            },
+            areaStyle: {
+              opacity: 0
+            }
+          },
+          selectedDataBackground: {
+            lineStyle: {
+              opacity: 0
+            },
+            areaStyle: {
+              opacity: 0
+            }
+          },
+          zoomLock: true,
+          borderColor: 'rgba(0, 0, 0, 0)',
+          handleIcon: '',
+          fillerColor: 'rgba(0, 0, 0, 0)',
+          moveHandleStyle: {
+            color: 'rgba(64, 158, 255, 0.3)'
+          }
         },
         xAxis: {
           axisLabel: {
@@ -186,48 +212,48 @@
           },
         },
         series: [{
-            name: "",
-            type: "pictorialBar",
-            symbol: path,
-            symbolSize: [25, 25],
-            symbolOffset: [0, 0],
-            z: 1,
-            itemStyle: {
-              opacity: 1,
-              color: colorList,
-              shadowColor: 'rgba(115, 106, 28, .7)',
-              shadowBlur: 3,
-              shadowOffsetX: 0,
-              shadowOffsetY: 2
-            },
-            data: [1, 1, 1, 1, 1, 1, 1]
+          name: "",
+          type: "pictorialBar",
+          symbol: path,
+          symbolSize: [25, 25],
+          symbolOffset: [0, 0],
+          z: 1,
+          itemStyle: {
+            opacity: 1,
+            color: colorList,
+            shadowColor: 'rgba(115, 106, 28, .7)',
+            shadowBlur: 3,
+            shadowOffsetX: 0,
+            shadowOffsetY: 2
           },
-          {
-            name: '2020',
-            type: 'bar',
-            symbol: path,
-            barWidth: 25,
-            barGap: '-100%',
-            z: 10,
-            itemStyle: {
-              color: colorList
-            },
-            data: data1
+          data: [1, 1, 1, 1, 1, 1, 1]
+        },
+        {
+          name: '2020',
+          type: 'bar',
+          symbol: path,
+          barWidth: 25,
+          barGap: '-100%',
+          z: 10,
+          itemStyle: {
+            color: colorList
           },
-          {
-            name: "",
-            type: "pictorialBar",
-            symbol: path,
-            symbolSize: [25, 10],
-            symbolOffset: [0, 0],
-            z: 12,
-            itemStyle: {
-              opacity: 1,
-              color: '#69d8ff'
-            },
-            symbolPosition: "end",
-            data: data1
+          data: data1
+        },
+        {
+          name: "",
+          type: "pictorialBar",
+          symbol: path,
+          symbolSize: [25, 10],
+          symbolOffset: [0, 0],
+          z: 12,
+          itemStyle: {
+            opacity: 1,
+            color: '#69d8ff'
           },
+          symbolPosition: "end",
+          data: data1
+        },
         ]
       };
 
@@ -284,14 +310,14 @@
           icon: 'path://M0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z',
 
           data: [{
-              name: '管理人员'
-            },
-            {
-              name: '消防设备'
-            },
-            {
-              name: '易燃材料'
-            }
+            name: '管理人员'
+          },
+          {
+            name: '消防设备'
+          },
+          {
+            name: '易燃材料'
+          }
           ]
         },
         grid: {
@@ -388,13 +414,13 @@
             normal: {
               //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0,
-                  color: "rgba(113, 220, 136, 0.3)"
-                },
-                {
-                  offset: 1,
-                  color: "rgba(113, 220, 136, 0)"
-                }
+                offset: 0,
+                color: "rgba(113, 220, 136, 0.3)"
+              },
+              {
+                offset: 1,
+                color: "rgba(113, 220, 136, 0)"
+              }
               ], false),
               shadowColor: 'rgba(113, 220, 136, 0.5)', //阴影颜色
               shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
@@ -425,13 +451,13 @@
             normal: {
               //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0,
-                  color: "rgba(0, 254, 255, 0.3)"
-                },
-                {
-                  offset: 1,
-                  color: "rgba(0, 254, 255, 0)"
-                }
+                offset: 0,
+                color: "rgba(0, 254, 255, 0.3)"
+              },
+              {
+                offset: 1,
+                color: "rgba(0, 254, 255, 0)"
+              }
               ], false),
               shadowColor: 'rgba(0, 254, 255, 0.5)', //阴影颜色
               shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
@@ -462,13 +488,13 @@
             normal: {
               //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0,
-                  color: "rgba(15, 130, 222, 0.3)"
-                },
-                {
-                  offset: 1,
-                  color: "rgba(15, 130, 222, 0)"
-                }
+                offset: 0,
+                color: "rgba(15, 130, 222, 0.3)"
+              },
+              {
+                offset: 1,
+                color: "rgba(15, 130, 222, 0)"
+              }
               ], false),
               shadowColor: 'rgba(15, 130, 222, 0.5)', //阴影颜色
               shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
@@ -513,17 +539,17 @@
 
       // 数据
       chartdata = [{
-          name: '消防设备',
-          value: 50,
-        },
-        {
-          name: '易燃材料',
-          value: 25,
-        },
-        {
-          name: '管理人员',
-          value: 25,
-        }
+        name: '消防设备',
+        value: 50,
+      },
+      {
+        name: '易燃材料',
+        value: 25,
+      },
+      {
+        name: '管理人员',
+        value: 25,
+      }
       ];
       radius = ['50%', '54%'];
       // 颜色系列
@@ -588,7 +614,7 @@
         tooltip: {
           formatter: (params) => {
             if (params.name !== '') {
-              return params.name + ' : ' + params.value + '\n' + '(' + params.percent + '%)';
+              return params.name + ' : ' + params.value;
             }
           },
         },
@@ -698,19 +724,23 @@
 
 <body>
   <div class="page_root">
-    <div id="mask" class="mask">
-      <img src="./assets/images/组 1.png" alt="">
+    <div id="mask"
+         class="mask">
+      <img src="./assets/images/组 1.png"
+           alt="">
     </div>
     <section class="header">
       <div class="weather">
-        <img src="./assets/images/云.png" alt="">
+        <img src="./assets/images/云.png"
+             alt="">
         <span>多云</span>
         <span>-1℃-5℃</span>
       </div>
       <div class="header_title">氟产业开发区智慧园区管理平台</div>
       <div class="header_time">
         <span>2021-12-02 18:00:00</span>
-        <img src="./assets/images/退出.png" alt="">
+        <img src="./assets/images/退出.png"
+             alt="">
       </div>
     </section>
     <div class="left">
@@ -730,7 +760,8 @@
             管理人员
           </div>
         </div>
-        <div id="left_top_chart" class="left_top_chart"></div>
+        <div id="left_top_chart"
+             class="left_top_chart"></div>
       </div>
       <div class="box new">
         <div class="box_title">最新消息</div>
@@ -802,10 +833,15 @@
       </div>
     </div>
     <div class="center_bottom">
-      <div class="center_bottom_item" onclick="itemonClick(1)">
+      <div class="center_bottom_item"
+           onclick="itemonClick(1)">
         <div class="imgBox">
-          <img class="img1" src="./assets/images/消防设备-bj.png" alt="">
-          <img class="img2" src="./assets/images/消防设备.png" alt="">
+          <img class="img1"
+               src="./assets/images/消防设备-bj.png"
+               alt="">
+          <img class="img2"
+               src="./assets/images/消防设备.png"
+               alt="">
         </div>
         <div class="info">
           <div class="label">15469</div>
@@ -813,10 +849,15 @@
         </div>
       </div>
 
-      <div class="center_bottom_item" onclick="itemonClick(2)">
+      <div class="center_bottom_item"
+           onclick="itemonClick(2)">
         <div class="imgBox">
-          <img class="img1" src="./assets/images/消防设备-bj.png" alt="">
-          <img class="img2" src="./assets/images/易燃材料.png" alt="">
+          <img class="img1"
+               src="./assets/images/消防设备-bj.png"
+               alt="">
+          <img class="img2"
+               src="./assets/images/易燃材料.png"
+               alt="">
         </div>
         <div class="info">
           <div class="label">15469</div>
@@ -826,8 +867,12 @@
 
       <div class="center_bottom_item">
         <div class="imgBox">
-          <img class="img1" src="./assets/images/消防设备-bj.png" alt="">
-          <img class="img2" src="./assets/images/管理人员.png" alt="">
+          <img class="img1"
+               src="./assets/images/消防设备-bj.png"
+               alt="">
+          <img class="img2"
+               src="./assets/images/管理人员.png"
+               alt="">
         </div>
         <div class="info">
           <div class="label">15469</div>
@@ -838,33 +883,42 @@
     <div class="right">
       <div class="box percentage">
         <div class="box_title">厂区设备百分比</div>
-        <div id="right_top_chart" class="right_top_chart"></div>
+        <div id="right_top_chart"
+             class="right_top_chart"></div>
       </div>
       <div class="box distributed">
         <div class="box_title">厂区设备分布</div>
-        <div id="right_center_chart" class="right_center_chart"></div>
+        <div id="right_center_chart"
+             class="right_center_chart"></div>
       </div>
       <div class="box date">
         <div class="box_title">时间选择</div>
         <div class="date_time_select_box">
-          <input type="text" value="2021-12-13" class="layui-input date_time_select" id="test1">
+          <input type="text"
+                 value="2021-12-13"
+                 class="layui-input date_time_select"
+                 id="test1">
         </div>
       </div>
     </div>
     <section class="footer"></section>
 
-    <section id="layer" class="layer">
+    <section id="layer"
+             class="layer">
       <div class="layer_content">
         <div class="layer_content_title">
           <span></span>
           金凯厂区
-          <img src="./assets/images/关闭.png" alt="" onclick="layerClose()">
+          <img src="./assets/images/关闭.png"
+               alt=""
+               onclick="layerClose()">
         </div>
 
         <div class="layer_content_children">
           <div class="layer_content_children_left">
             <div class="bigimg">
-              <div id="layui-tab" class="layui-tab">
+              <div id="layui-tab"
+                   class="layui-tab">
                 <ul class="layui-tab-title">
                   <li class="layui-this">Tab 1</li>
                   <li>Tab 2</li>
@@ -873,29 +927,38 @@
                 </ul>
                 <div class="layui-tab-content">
                   <div class="layui-tab-item layui-show">
-                    <img src="./assets/images/微信图片_20211213214710.png" alt="">
+                    <img src="./assets/images/微信图片_20211213214710.png"
+                         alt="">
                   </div>
                   <div class="layui-tab-item">
-                    <img src="./assets/images/微信图片_20211213214710.png" alt="">
+                    <img src="./assets/images/微信图片_20211213214710.png"
+                         alt="">
                   </div>
                   <div class="layui-tab-item">
-                    <img src="./assets/images/微信图片_20211213214710.png" alt="">
+                    <img src="./assets/images/微信图片_20211213214710.png"
+                         alt="">
                   </div>
                   <div class="layui-tab-item">
-                    <img src="./assets/images/微信图片_20211213214710.png" alt="">
+                    <img src="./assets/images/微信图片_20211213214710.png"
+                         alt="">
                   </div>
                 </div>
               </div>
-              <img id="bigimg-img" src="./assets/images/微信图片_20211213214710.png" alt="">
+              <img id="bigimg-img"
+                   src="./assets/images/微信图片_20211213214710.png"
+                   alt="">
             </div>
             <div class="smallImg">
               <div class="item">
                 <div class="smallImg_title">
-                  <img src="./assets/images/时间.png" alt="">
+                  <img src="./assets/images/时间.png"
+                       alt="">
                   图文信息
                 </div>
                 <div class="smallImg_content">
-                  <img class="smallImg_content_img" src="./assets/images/微信图片_20211213214714.png" alt="">
+                  <img class="smallImg_content_img"
+                       src="./assets/images/微信图片_20211213214714.png"
+                       alt="">
                   简介内容简介内容简介内容简介内容
                   简介内容简介内容简介内容简介内容
                   简介内容简介内容简介内容简介内容。
@@ -904,11 +967,14 @@
               </div>
               <div class="item">
                 <div class="smallImg_title">
-                  <img src="./assets/images/时间.png" alt="">
+                  <img src="./assets/images/时间.png"
+                       alt="">
                   图文信息
                 </div>
                 <div class="smallImg_content">
-                  <img class="smallImg_content_img" src="./assets/images/微信图片_20211213214714.png" alt="">
+                  <img class="smallImg_content_img"
+                       src="./assets/images/微信图片_20211213214714.png"
+                       alt="">
                   简介内容简介内容简介内容简介内容
                   简介内容简介内容简介内容简介内容
                   简介内容简介内容简介内容简介内容。
@@ -918,30 +984,39 @@
           </div>
           <div class="layer_content_children_right">
             <div class="date_select">
-              <input class="date_time_select2" type="text" value="2021-12-13" id="test2">
+              <input class="date_time_select2"
+                     type="text"
+                     value="2021-12-13"
+                     id="test2">
             </div>
 
             <div class="icon_bar">
               <div class="item">
                 <div class="icons">
-                  <img src="./assets/images/消防设备-1.png" alt="">
-                  <img src="./assets/images/底座-1.png" alt="">
+                  <img src="./assets/images/消防设备-1.png"
+                       alt="">
+                  <img src="./assets/images/底座-1.png"
+                       alt="">
                 </div>
                 <span class="label">消防设备</span>
                 <span class="value">256</span>
               </div>
               <div class="item">
                 <div class="icons">
-                  <img src="./assets/images/易燃材料-1.png" alt="">
-                  <img src="./assets/images/底座-2.png" alt="">
+                  <img src="./assets/images/易燃材料-1.png"
+                       alt="">
+                  <img src="./assets/images/底座-2.png"
+                       alt="">
                 </div>
                 <span class="label">易燃材料</span>
                 <span class="value">256</span>
               </div>
               <div class="item">
                 <div class="icons">
-                  <img src="./assets/images/管理人员-1.png" alt="">
-                  <img src="./assets/images/底座-3.png" alt="">
+                  <img src="./assets/images/管理人员-1.png"
+                       alt="">
+                  <img src="./assets/images/底座-3.png"
+                       alt="">
                 </div>
                 <span class="label">管理人员</span>
                 <span class="value">256</span>
