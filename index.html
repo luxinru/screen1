@@ -78,7 +78,7 @@
       var myChart1 = echarts.init(document.getElementById('mask'));
       var option1;
 
-      myChart1.on('click', { name: 'position' }, function (params) {
+      myChart1.on('click', { name: 'pin' }, function (params) {
         itemonClick(1)
       });
 
@@ -92,7 +92,7 @@
               type: 'map',
               map: 'testMap',
               roam: true,
-              zoom: 2,
+              zoom: 1,
               emphasis: {
                 label: {
                   show: false
@@ -106,7 +106,19 @@
                     areaColor: 'red',
                   }
                 }
-              ]
+              ],
+              markPoint: {
+                data: [
+                  {
+                    name: 'pin',
+                    symbol: 'pin',
+                    coord: [800, 500],
+                    itemStyle: {
+                      color: 'red'
+                    }
+                  }
+                ]
+              }
             }
           ]
         };
